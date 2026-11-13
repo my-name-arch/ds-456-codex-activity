@@ -2,8 +2,6 @@
 
 We used Codex to explore Minneapolis scooter and e-bike trips. The reflections below are drafts for us to review. We still need to review the verification evidence ourselves and complete the assignment's separate Plan-mode review.
 
-The same writeup is saved in [Codex_Activity_Completed.md](Codex_Activity_Completed.md). Our earlier notes are in [Codex_Activity_Notes.md](Codex_Activity_Notes.md).
-
 # Macalester DS 456 - Projects in Data Science - Codex Activity
 
 *Originally created by Shilad Sen (with help from Codex), 2025/11/25. Updated by Bret Jackson 2026/11/08*
@@ -118,12 +116,14 @@ Respond in 2–3 short bullets, considering:
 - If we started again, we'd use the downloaded CSV and a shorter pandas script. The API requests and code for drawing SVGs made this more complicated than it needed to be.
 - The missing locations needed more attention than a simple row count. All 17,551 trail starts and 17,823 trail ends were missing segment IDs. Those trips still have useful duration and distance data, so dropping them entirely would lose information.
 
-Supporting work: [exploration report](Analysis/outputs/exploration.md), [code](Analysis/Codex_activity.py), and [earlier exploration notes](Codex_Activity_Notes.md).
+Supporting work: [exploration report](Analysis/outputs/exploration.md) and [code](Analysis/Codex_activity.py). The report lists the variable types, units, and missing values for each column.
 
-| Measurement | Mean | Median | 25th–75th percentiles |
-|---|---:|---:|---:|
-| Duration (minutes) | 12.51 | 7.87 | 4.58–14.48 |
-| Distance (kilometers) | 2.31 | 1.56 | 0.84–2.84 |
+Across the full dataset, there are 778,738 scooter trips (76.05%) and 245,276 bicycle trips (23.95%). The source describes the bicycle category as e-bikes.
+
+| Measurement | Mean | Median | 25th–75th percentiles | 95th percentile |
+|---|---:|---:|---:|---:|
+| Duration (minutes) | 12.51 | 7.87 | 4.58–14.48 | 39.70 |
+| Distance (kilometers) | 2.31 | 1.56 | 0.84–2.84 | 7.07 |
 
 ![Vehicle counts](Analysis/outputs/vehicle_counts.svg)
 
