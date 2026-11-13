@@ -243,6 +243,15 @@ Full values: [threshold comparison](Analysis/outputs/threshold_comparison.csv).
 
 **Review timing:** We reviewed this plan in Plan mode **after the initial implementation**. We agreed to retain the main method, add the 50/100/200 comparison, and expand verification to include a bicycle-heavy segment and an ambiguous ID that should be excluded. Those additions were implemented after the review.
 
+**New follow-up — reviewed before implementation:** How do recorded duration and distance differ between scooters and e-bikes? We reviewed this separate step in Plan mode, made the decisions recorded below, then left Plan mode and requested implementation. It supplements our spatial question.
+
+- Use the full CSV, including street and trail trips and records excluded from mapping. Check required fields and unique, nonmissing TripIDs.
+- Group by scooter and bicycle (the city's e-bike category). For each measurement, count and exclude missing, nonnumeric, nonfinite, zero, and negative values separately.
+- Retain all valid long trips. Compare medians and the middle 50%, converting recorded seconds to minutes and meters to kilometers.
+- Save a table and two labeled charts. Independently recalculate the summaries from the raw CSV using Python's `statistics` module and show unit conversions for identified source records.
+
+**Our decision and reason:** We chose to add a follow-up rather than replace the spatial question. We also kept unusually long trips and used medians and quartiles, since removing them would require a cutoff we couldn't justify.
+
 ## 7.2 Implement and inspect
 
 Use the `/plan` toggle to leave Plan mode and confirm it is off **before** requesting implementation, or Press the "Implement this plan" option if it appears.
@@ -266,6 +275,12 @@ One issue was repeated GBSIDs: ID 11022 appeared on two pieces of 21ST AVE S. Th
 ![Scooter share on segments with at least 100 starts](Analysis/outputs/scooter_share_map.svg)
 
 See the [results](Analysis/outputs/spatial_analysis.md) and [segment table](Analysis/outputs/segment_vehicle_shares.csv).
+
+**New follow-up results:** Across **778,738 scooter trips** and **245,276 e-bike trips**, median duration was **7.47 vs. 9.28 minutes** and median distance was **1.48 vs. 1.86 km**. E-bike trips had higher medians for both, although the middle 50% ranges overlap. These differences describe recorded trips; they don't tell us why people chose a vehicle.
+
+We checked measurement quality separately, so a bad distance wouldn't remove an otherwise valid duration. This export had no missing or invalid measurements, nonpositive values, or unexpected vehicle categories. All valid long trips were retained, and the spatial results were unchanged.
+
+See the [comparison and charts](Analysis/outputs/vehicle_comparison.md), [exact table](Analysis/outputs/vehicle_comparison.csv), and [code](Analysis/vehicle_comparison.py).
 
 ## 7.3 Verify one important result and reflect
 
@@ -302,6 +317,12 @@ Record:
 **Added after review:** GBSID **14327** was chosen because bicycles have a majority. The city service confirms **11 scooter and 128 bicycle starts**, giving **11 / 139 × 100 = 7.9137%** scooters; the counts, share, and street names match the output. GBSID **11022** was chosen because it caused the repeated-key issue. The street service returns **two features**, and the trip service confirms **96 scooter + 24 bicycle = 120 starts**. It is absent from the mapped table and appears once in the exclusions with those counts and the reason `ambiguous_network_id`. The original checks for 16907, 17120, and 19543 also still pass.
 
 The [verification report](Analysis/outputs/verification.md), [source queries and responses](Analysis/outputs/verification_reference.json), and [checking code](Analysis/verify_spatial.py) contain the evidence.
+
+**New follow-up verification:** A separate script reread the full raw CSV and used `statistics.median` and inclusive quartiles, rather than the analysis's frequency-counter calculation. All four vehicle/measurement groups matched in counts, exclusions, units, and unrounded quartiles within **1e-9**. For example, scooter duration was **4.40 / 7.466666667 / 13.683333333 minutes** at the 25th percentile, median, and 75th percentile. The check also rejected a deliberately increased median.
+
+The evidence lists five source records per vehicle ordered by ObjectId. Scooter TripID **107916** has **230 seconds / 60 = 3.833333333 minutes** and **924 meters / 1000 = 0.924 km**. These rows check conversions; the separate full-data calculation checks the medians. Empty groups, single-value groups, bad measurements, and duplicate IDs were also tested. All five original spatial checks still pass.
+
+See the [follow-up verification evidence](Analysis/outputs/vehicle_comparison_verification.md) and [checking code](Analysis/verify_vehicle_comparison.py). We still need to inspect that evidence personally; automated agreement doesn't verify the original vendor records.
 
 # 8. What to hand in
 

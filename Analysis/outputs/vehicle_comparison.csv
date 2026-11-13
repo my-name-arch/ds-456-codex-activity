@@ -1,0 +1,5 @@
+vehicle,measurement,unit,total_trips,valid_n,missing,nonnumeric,nonfinite,zero,negative,q25,median,q75
+scooter,TripDuration,minutes,778738,778738,0,0,0,0,0,4.4,7.466666666666667,13.683333333333334
+scooter,TripDistance,kilometers,778738,778738,0,0,0,0,0,0.808,1.479,2.65
+bicycle,TripDuration,minutes,245276,245276,0,0,0,0,0,5.316666666666666,9.283333333333333,17.0
+bicycle,TripDistance,kilometers,245276,245276,0,0,0,0,0,0.955,1.859,3.499
