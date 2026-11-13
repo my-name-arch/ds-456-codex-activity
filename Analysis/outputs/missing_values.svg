@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="648" viewBox="0 0 1050 648">
+<title>Missing values by field</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#172b4d">
+<text x="20" y="30" font-size="22">Missing values by field</text>
+<text x="20" y="55" font-size="13">Full CSV, 1,024,014 rows; empty/whitespace cells; records retained</text>
+<text x="20" y="100" font-size="14">TripID</text>
+<rect x="230" y="80" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="100" font-size="14">0</text>
+<text x="20" y="148" font-size="14">vehicleType</text>
+<rect x="230" y="128" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="148" font-size="14">0</text>
+<text x="20" y="196" font-size="14">TripDuration</text>
+<rect x="230" y="176" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="196" font-size="14">0</text>
+<text x="20" y="244" font-size="14">TripDistance</text>
+<rect x="230" y="224" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="244" font-size="14">0</text>
+<text x="20" y="292" font-size="14">StartTime</text>
+<rect x="230" y="272" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="292" font-size="14">0</text>
+<text x="20" y="340" font-size="14">EndTime</text>
+<rect x="230" y="320" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="340" font-size="14">0</text>
+<text x="20" y="388" font-size="14">StartCenterlineID</text>
+<rect x="230" y="368" width="551.5" height="28" fill="#276fbf"/>
+<text x="810" y="388" font-size="14">17,551</text>
+<text x="20" y="436" font-size="14">StartCenterlineType</text>
+<rect x="230" y="416" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="436" font-size="14">0</text>
+<text x="20" y="484" font-size="14">EndCenterlineID</text>
+<rect x="230" y="464" width="560.0" height="28" fill="#276fbf"/>
+<text x="810" y="484" font-size="14">17,823</text>
+<text x="20" y="532" font-size="14">EndCenterlineType</text>
+<rect x="230" y="512" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="532" font-size="14">0</text>
+<text x="20" y="580" font-size="14">ObjectId</text>
+<rect x="230" y="560" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="580" font-size="14">0</text>
+<text x="230" y="636" font-size="13">Bar length: trip count (starts at zero); values shown at right</text>
+</g></svg>

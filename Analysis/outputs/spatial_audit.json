@@ -1,0 +1,31 @@
+{
+  "total_trips": 1024014,
+  "unique_trip_ids": 1024014,
+  "vehicles": {
+    "scooter": 778738,
+    "bicycle": 245276
+  },
+  "network_features": 13021,
+  "unique_network_GBSID": 11980,
+  "duplicated_network_GBSID": 251,
+  "network_null_id_features": 527,
+  "matched_starts": 895767,
+  "matched_segments": 9194,
+  "excluded": {
+    "nonstreet_start": 17551,
+    "unmatched_street_id": 95001,
+    "ambiguous_network_id": 15695
+  },
+  "unmatched_distinct_ids": 1166,
+  "ambiguous_distinct_start_ids": 150,
+  "minimum_starts": 100,
+  "eligible_segments": 1775,
+  "eligible_starts": 760736,
+  "eligible_pooled_scooter_share": 0.7727385058680015,
+  "eligible_median_segment_scooter_share": 0.7688888888888888,
+  "eligible_min_scooter_share": 0.07913669064748201,
+  "eligible_max_scooter_share": 0.9861111111111112,
+  "scooter_majority_segments": 1686,
+  "bicycle_majority_segments": 86,
+  "tied_segments": 3
+}

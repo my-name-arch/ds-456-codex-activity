@@ -1,0 +1,15 @@
+{
+  "trip_source": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/_Motorized_Scooter_and_eBike_Trips_2025/FeatureServer",
+  "street_source": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/PW_Street_Centerline/FeatureServer/0",
+  "network_crs": "EPSG:26915",
+  "files": {
+    "data/exploration/_Motorized_Scooter_and_eBike_Trips_2025.csv": {
+      "bytes": 105122111,
+      "sha256": "3fce17519012751cc922ed31a7d17508739727fa049e7b888e6b614918524482"
+    },
+    "data/exploration/streets_26915.json": {
+      "bytes": 4653487,
+      "sha256": "716e6b308a18dc2ff437cddd2ebc999aa9f64e5dcc684fd8d82e73eb427f64a0"
+    }
+  }
+}

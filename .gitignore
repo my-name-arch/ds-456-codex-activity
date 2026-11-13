@@ -203,6 +203,7 @@ cython_debug/
 # Data files (local downloads, not tracked)
 data/*
 !data/.gitkeep
+!data/README.md
 .cursorignore
 .cursorindexingignore
 

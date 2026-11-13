@@ -1,0 +1,187 @@
+{
+  "trips": {
+    "url": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/_Motorized_Scooter_and_eBike_Trips_2025/FeatureServer/0/query",
+    "parameters": {
+      "f": "json",
+      "where": "StartCenterlineType = 'street' AND StartCenterlineID IN (16907,17120,19543)",
+      "groupByFieldsForStatistics": "StartCenterlineID,vehicleType",
+      "outStatistics": "[{\"statisticType\": \"count\", \"onStatisticField\": \"ObjectId\", \"outStatisticFieldName\": \"reference_count\"}]",
+      "returnGeometry": "false"
+    },
+    "response": {
+      "objectIdFieldName": "ObjectId",
+      "uniqueIdField": {
+        "name": "ObjectId",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "",
+      "fields": [
+        {
+          "name": "reference_count",
+          "type": "esriFieldTypeInteger",
+          "alias": "reference_count",
+          "sqlType": "sqlTypeInteger",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "StartCenterlineID",
+          "type": "esriFieldTypeDouble",
+          "alias": "StartCenterlineID",
+          "sqlType": "sqlTypeFloat",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "vehicleType",
+          "type": "esriFieldTypeString",
+          "alias": "vehicleType",
+          "sqlType": "sqlTypeNVarchar",
+          "length": 4000,
+          "domain": null,
+          "defaultValue": null
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "reference_count": 260,
+            "StartCenterlineID": 16907,
+            "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 109,
+            "StartCenterlineID": 17120,
+            "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 76,
+            "StartCenterlineID": 19543,
+            "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 1480,
+            "StartCenterlineID": 16907,
+            "vehicleType": "scooter"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 654,
+            "StartCenterlineID": 17120,
+            "vehicleType": "scooter"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 417,
+            "StartCenterlineID": 19543,
+            "vehicleType": "scooter"
+          }
+        }
+      ]
+    }
+  },
+  "streets": {
+    "url": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/PW_Street_Centerline/FeatureServer/0/query",
+    "parameters": {
+      "f": "json",
+      "where": "GBSID IN (16907,17120,19543)",
+      "outFields": "OBJECTID,GBSID,STREET_O_NAME,STREET_F_NAME,STREET_T_NAME",
+      "returnGeometry": "false"
+    },
+    "response": {
+      "objectIdFieldName": "OBJECTID",
+      "uniqueIdField": {
+        "name": "OBJECTID",
+        "isSystemMaintained": true
+      },
+      "globalIdFieldName": "",
+      "geometryType": "esriGeometryPolyline",
+      "spatialReference": {
+        "wkid": 103734,
+        "latestWkid": 103734
+      },
+      "fields": [
+        {
+          "name": "OBJECTID",
+          "type": "esriFieldTypeOID",
+          "alias": "OBJECTID",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "GBSID",
+          "type": "esriFieldTypeInteger",
+          "alias": "GBSID",
+          "sqlType": "sqlTypeOther",
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STREET_O_NAME",
+          "type": "esriFieldTypeString",
+          "alias": "STREET_O_NAME",
+          "sqlType": "sqlTypeOther",
+          "length": 30,
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STREET_F_NAME",
+          "type": "esriFieldTypeString",
+          "alias": "STREET_F_NAME",
+          "sqlType": "sqlTypeOther",
+          "length": 30,
+          "domain": null,
+          "defaultValue": null
+        },
+        {
+          "name": "STREET_T_NAME",
+          "type": "esriFieldTypeString",
+          "alias": "STREET_T_NAME",
+          "sqlType": "sqlTypeOther",
+          "length": 30,
+          "domain": null,
+          "defaultValue": null
+        }
+      ],
+      "features": [
+        {
+          "attributes": {
+            "OBJECTID": 5757,
+            "GBSID": 17120,
+            "STREET_O_NAME": "1ST AVE N",
+            "STREET_F_NAME": "3RD ST N",
+            "STREET_T_NAME": "4TH ST N"
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 6012,
+            "GBSID": 19543,
+            "STREET_O_NAME": "8TH ST N",
+            "STREET_F_NAME": "1ST AVE N",
+            "STREET_T_NAME": "HENNEPIN AVE"
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 6721,
+            "GBSID": 16907,
+            "STREET_O_NAME": "6TH AVE N",
+            "STREET_F_NAME": "3RD ST N",
+            "STREET_T_NAME": "WASHINGTON AVE N"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="216" viewBox="0 0 1050 216">
+<title>Minneapolis scooter and e-bike trips</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#172b4d">
+<text x="20" y="30" font-size="22">Minneapolis scooter and e-bike trips</text>
+<text x="20" y="55" font-size="13">Whole-table counts by recorded vehicle type</text>
+<text x="20" y="100" font-size="14">scooter</text>
+<rect x="230" y="80" width="560.0" height="28" fill="#276fbf"/>
+<text x="810" y="100" font-size="14">778,738</text>
+<text x="20" y="148" font-size="14">bicycle</text>
+<rect x="230" y="128" width="176.4" height="28" fill="#276fbf"/>
+<text x="810" y="148" font-size="14">245,276</text>
+<text x="230" y="204" font-size="13">Bar length: trip count (starts at zero); values shown at right</text>
+</g></svg>

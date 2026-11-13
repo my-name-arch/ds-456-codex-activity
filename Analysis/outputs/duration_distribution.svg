@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="456" viewBox="0 0 1050 456">
+<title>Trip duration (minutes) distribution</title>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#172b4d">
+<text x="20" y="30" font-size="22">Trip duration (minutes) distribution</text>
+<text x="20" y="55" font-size="13">Full CSV; valid n = 1,024,014; missing = 0; invalid = 0</text>
+<text x="20" y="100" font-size="14">Below 0</text>
+<rect x="230" y="80" width="0.0" height="28" fill="#276fbf"/>
+<text x="810" y="100" font-size="14">0</text>
+<text x="20" y="148" font-size="14">0 to &lt;5</text>
+<rect x="230" y="128" width="494.6" height="28" fill="#276fbf"/>
+<text x="810" y="148" font-size="14">292,876</text>
+<text x="20" y="196" font-size="14">5 to &lt;10</text>
+<rect x="230" y="176" width="560.0" height="28" fill="#276fbf"/>
+<text x="810" y="196" font-size="14">331,595</text>
+<text x="20" y="244" font-size="14">10 to &lt;15</text>
+<rect x="230" y="224" width="261.0" height="28" fill="#276fbf"/>
+<text x="810" y="244" font-size="14">154,562</text>
+<text x="20" y="292" font-size="14">15 to &lt;30</text>
+<rect x="230" y="272" width="270.4" height="28" fill="#276fbf"/>
+<text x="810" y="292" font-size="14">160,127</text>
+<text x="20" y="340" font-size="14">30 to &lt;60</text>
+<rect x="230" y="320" width="107.1" height="28" fill="#276fbf"/>
+<text x="810" y="340" font-size="14">63,416</text>
+<text x="20" y="388" font-size="14">60+</text>
+<rect x="230" y="368" width="36.2" height="28" fill="#276fbf"/>
+<text x="810" y="388" font-size="14">21,438</text>
+<text x="230" y="444" font-size="13">Bar length: trip count (starts at zero); values shown at right</text>
+</g></svg>
