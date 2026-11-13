@@ -22,6 +22,6 @@ python3 Analysis/spatial_analysis.py
 python3 Analysis/verify_spatial.py
 ```
 
-All scripts use Python's standard library. Figures, tables, reference-query evidence, and reports are saved under `Analysis/outputs/`. `data_provenance.json` records SHA-256 hashes of the full CSV and merged street geometry used for the spatial results. The saved three-segment verification reference is tracked under `Analysis/outputs/verification_reference.json` so readers can inspect it without downloading raw data.
+All scripts use Python's standard library. Figures, tables, reference-query evidence, and reports are saved under `Analysis/outputs/`. `data_provenance.json` records SHA-256 hashes of the full CSV and merged street geometry used for the spatial results. `threshold_comparison.csv` compares minimums of 50, 100, and 200 starts without changing the main 100-start maps. The saved verification reference covers four mapped segments and one ambiguous-ID exclusion and is tracked under `Analysis/outputs/verification_reference.json` so readers can inspect it without downloading raw data.
 
 The street layer is current, not necessarily a 2025 snapshot. Repeated non-null GBSIDs and unmatched trip IDs are excluded explicitly. A future export or updated service may produce different counts; do not mix updated data with cached summaries without checking consistency.

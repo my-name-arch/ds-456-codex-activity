@@ -227,10 +227,21 @@ Ask Codex to clarify or revise anything you cannot justify. If you do not unders
 
 - Use the full CSV, check TripID uniqueness, and count scooter and bicycle street starts by start ID. Join only IDs that match one street feature, recording exclusions.
 - Keep segments with **at least 100 starts**. Calculate scooter share as scooter starts divided by scooter plus bicycle starts; bicycle share is the remainder.
+- Compare minimums of 50, 100, and 200 starts to see how much the overall scooter share changes. Keep 100 for the main results.
 - Map counts and shares, then summarize the share range and how many segments have a majority of each vehicle type.
-- Check selected counts, shares, and street names against separate queries to the city's services.
+- Check four segments against the city's services, including one with a bicycle majority. Also check that an ambiguous street ID is excluded rather than counted twice.
 
-**Decision:** We chose 100 starts instead of 50 to reduce the influence of small counts. This retains **1,775 segments**, compared with **2,641** at a minimum of 50, but doesn't make every percentage equally reliable.
+**Decision:** We kept 100 starts to reduce the influence of small counts. The overall scooter share stays near 77% across the three cutoffs, though the segments included change and not every percentage is equally reliable.
+
+| Minimum starts | Segments | Trip starts | Overall scooter share |
+|---|---:|---:|---:|
+| 50 | 2,641 | 822,091 | 76.82% |
+| 100 | 1,775 | 760,736 | 77.27% |
+| 200 | 1,033 | 655,339 | 78.02% |
+
+Full values: [threshold comparison](Analysis/outputs/threshold_comparison.csv).
+
+**Review timing:** We reviewed the plan in Plan mode after the initial implementation. We chose to keep the main method and add the threshold comparison and both verification cases below.
 
 ## 7.2 Implement and inspect
 
@@ -286,7 +297,9 @@ Record:
 - **What and why:** Check the counts, scooter share, and street join for GBSID **16907**, since a wrong join or denominator would affect the map.
 - **Reference:** A separate city trip-service query returned **1,480 scooter starts and 260 bicycle starts**. The street service identifies this as **6TH AVE N, from 3RD ST N to WASHINGTON AVE N**. These references came from the services, not our local output.
 - **Comparison:** The expected share is **1480 / (1480 + 260) × 100 = 85.0575%**. The analysis gives the same counts, share, and street names.
-- **Conclusion:** This case needed no further correction after the repeated-key fix. Two additional segments also matched. These checks support the selected records, not every segment or the accuracy of the original trip data.
+- **Conclusion:** All four mapped segments and the ambiguous-ID exclusion pass. No further correction to the main results was needed. These checks support the selected cases, not every segment or the accuracy of the original trip data.
+
+**Added after review:** GBSID **14327** was chosen because bicycles have a majority. The city service confirms **11 scooter and 128 bicycle starts**, giving **11 / 139 × 100 = 7.9137%** scooters; the counts, share, and street names match the output. GBSID **11022** was chosen because it caused the repeated-key issue. The street service returns **two features**, and the trip service confirms **96 scooter + 24 bicycle = 120 starts**. It is absent from the mapped table and appears once in the exclusions with those counts and the reason `ambiguous_network_id`. The original checks for 16907, 17120, and 19543 also still pass.
 
 The [verification report](Analysis/outputs/verification.md), [source queries and responses](Analysis/outputs/verification_reference.json), and [checking code](Analysis/verify_spatial.py) contain the evidence.
 
@@ -319,4 +332,4 @@ Before you’re done:
 
 See [data/README.md](data/README.md) for downloads and rerun commands. Code, maps, and verification are saved in [our fork](https://github.com/my-name-arch/ds-456-codex-activity).
 
-**Before submission:** Review these draft reflections, inspect the verification counts and arithmetic ourselves, and complete the separate Plan-mode review required by the assignment.
+**Before submission:** Review these draft reflections and inspect the verification counts and arithmetic ourselves. The retrospective Plan-mode review is recorded in Task 7.1.

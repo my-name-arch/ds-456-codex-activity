@@ -3,7 +3,7 @@
     "url": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/_Motorized_Scooter_and_eBike_Trips_2025/FeatureServer/0/query",
     "parameters": {
       "f": "json",
-      "where": "StartCenterlineType = 'street' AND StartCenterlineID IN (16907,17120,19543)",
+      "where": "StartCenterlineType = 'street' AND StartCenterlineID IN (16907,17120,19543,14327,11022)",
       "groupByFieldsForStatistics": "StartCenterlineID,vehicleType",
       "outStatistics": "[{\"statisticType\": \"count\", \"onStatisticField\": \"ObjectId\", \"outStatisticFieldName\": \"reference_count\"}]",
       "returnGeometry": "false"
@@ -45,6 +45,20 @@
       "features": [
         {
           "attributes": {
+            "reference_count": 24,
+            "StartCenterlineID": 11022,
+            "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 128,
+            "StartCenterlineID": 14327,
+            "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
             "reference_count": 260,
             "StartCenterlineID": 16907,
             "vehicleType": "bicycle"
@@ -62,6 +76,20 @@
             "reference_count": 76,
             "StartCenterlineID": 19543,
             "vehicleType": "bicycle"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 96,
+            "StartCenterlineID": 11022,
+            "vehicleType": "scooter"
+          }
+        },
+        {
+          "attributes": {
+            "reference_count": 11,
+            "StartCenterlineID": 14327,
+            "vehicleType": "scooter"
           }
         },
         {
@@ -92,7 +120,7 @@
     "url": "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/PW_Street_Centerline/FeatureServer/0/query",
     "parameters": {
       "f": "json",
-      "where": "GBSID IN (16907,17120,19543)",
+      "where": "GBSID IN (16907,17120,19543,14327,11022)",
       "outFields": "OBJECTID,GBSID,STREET_O_NAME,STREET_F_NAME,STREET_T_NAME",
       "returnGeometry": "false"
     },
@@ -156,6 +184,24 @@
       "features": [
         {
           "attributes": {
+            "OBJECTID": 484,
+            "GBSID": 11022,
+            "STREET_O_NAME": "21ST AVE S",
+            "STREET_F_NAME": "31ST ST E",
+            "STREET_T_NAME": "30 1/2 ST E"
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 557,
+            "GBSID": 11022,
+            "STREET_O_NAME": "21ST AVE S",
+            "STREET_F_NAME": "30 1/2 ST E",
+            "STREET_T_NAME": "LAKE ST E"
+          }
+        },
+        {
+          "attributes": {
             "OBJECTID": 5757,
             "GBSID": 17120,
             "STREET_O_NAME": "1ST AVE N",
@@ -179,6 +225,15 @@
             "STREET_O_NAME": "6TH AVE N",
             "STREET_F_NAME": "3RD ST N",
             "STREET_T_NAME": "WASHINGTON AVE N"
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 10750,
+            "GBSID": 14327,
+            "STREET_O_NAME": "3RD AVE S",
+            "STREET_F_NAME": "46TH ST E",
+            "STREET_T_NAME": "45TH ST E"
           }
         }
       ]

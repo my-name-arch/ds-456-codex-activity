@@ -23,6 +23,7 @@ from Codex_activity import DATA, FULL_CSV, OUTPUT, fetch
 STREET_URL = "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/PW_Street_Centerline/FeatureServer/0"
 NETWORK = DATA / "streets_26915.json"
 MIN_STARTS = 100
+COMPARISON_MINIMUMS = (50, 100, 200)
 VEHICLES = ("scooter", "bicycle")
 
 
@@ -69,6 +70,21 @@ def write_csv(path, rows, fieldnames):
 def file_hash(path):
     with path.open("rb") as file:
         return hashlib.file_digest(file, "sha256").hexdigest()
+
+
+def compare_minimums(rows):
+    """Compare cutoffs on the same uniquely matched segments; do not change maps."""
+    comparison = []
+    for minimum in COMPARISON_MINIMUMS:
+        subset = [row for row in rows if row["total_starts"] >= minimum]
+        starts = sum(row["total_starts"] for row in subset)
+        comparison.append({
+            "minimum_starts": minimum,
+            "segments": len(subset),
+            "trip_starts": starts,
+            "scooter_share": sum(row["scooter"] for row in subset) / starts if starts else None,
+        })
+    return comparison
 
 
 def make_map(features, rows, mode, filename):
@@ -199,6 +215,9 @@ def analyze():
     fields = list(rows[0])
     write_csv(OUTPUT / "segment_vehicle_shares.csv", rows, fields)
     write_csv(OUTPUT / "unmatched_start_ids.csv", unmatched, ["GBSID", "scooter", "bicycle", "total_starts", "exclusion_reason"])
+    comparison = compare_minimums(rows)
+    write_csv(OUTPUT / "threshold_comparison.csv", comparison,
+              ["minimum_starts", "segments", "trip_starts", "scooter_share"])
     audit = {"total_trips": total, "unique_trip_ids": len(trip_ids), "vehicles": dict(vehicles),
              "network_features": len(features), "unique_network_GBSID": len(geometries),
              "duplicated_network_GBSID": len(ambiguous_keys), "network_null_id_features": key_counts[None],
@@ -237,7 +256,15 @@ def analyze():
     ordered = sorted(eligible, key=lambda row: (row["scooter_share"], row["GBSID"]))
     for row in ordered[:5] + ordered[-5:]:
         lines.append(f'| {row["GBSID"]} | {row["street_name"]} | {row["from_street"]} | {row["to_street"]} | {row["scooter"]:,} | {row["bicycle"]:,} | {row["total_starts"]:,} | {row["scooter_share"]:.2%} |')
-    lines += ["", "## Interpretation limits", "",
+    lines += ["", "## Minimum-start comparison", "",
+              "All cutoffs use the same uniquely matched street segments. The main maps and results retain the 100-start minimum.", "",
+              "| Minimum starts | Segments | Trip starts | Overall scooter share |",
+              "|---:|---:|---:|---:|"]
+    for row in comparison:
+        share = "n/a" if row["scooter_share"] is None else f"{row['scooter_share']:.2%}"
+        lines.append(f"| {row['minimum_starts']} | {row['segments']:,} | {row['trip_starts']:,} | {share} |")
+    lines += ["", "The overall scooter share changes little across these cutoffs. The included segments and their individual percentages can still differ. The cutoff does not guarantee statistical reliability. Full values: [threshold_comparison.csv](threshold_comparison.csv).",
+              "", "## Interpretation limits", "",
               "The unit is a recorded trip start, not a rider or a route. The 100-start threshold reduces the influence of very small denominators; it is a descriptive choice, not a statistical significance test. Segment-level summaries weight each eligible segment equally; pooled shares weight by trip count. No causal explanation or rider preference can be inferred. Shared-vehicle availability, pricing, land use, and program coverage were not controlled. Current street geometry may differ from the network used in 2025; unmatched and ambiguous IDs are listed rather than guessed. GBSIDs attached to multiple network features are excluded to avoid multiplying trip counts or assigning starts to an uncertain geometry.",
               "", "Sources: [trip table](https://opendata.minneapolismn.gov/datasets/d9a1f322528447ff9c1bc86e5d0895c5_0/explore), [PW Street Centerline](https://opendata.minneapolismn.gov/datasets/pw-street-centerline/about).", ""]
     (OUTPUT / "spatial_analysis.md").write_text("\n".join(lines))

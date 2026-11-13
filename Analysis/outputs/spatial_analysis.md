@@ -30,6 +30,18 @@ Research question: How do scooter and e-bike proportions vary across street segm
 | 17057 | PILLSBURY AVE | 26TH ST W | 25TH ST W | 203 | 5 | 208 | 97.60% |
 | 16922 | CLEVELAND ST NE | BROADWAY ST NE | DEAD END (N) | 142 | 2 | 144 | 98.61% |
 
+## Minimum-start comparison
+
+All cutoffs use the same uniquely matched street segments. The main maps and results retain the 100-start minimum.
+
+| Minimum starts | Segments | Trip starts | Overall scooter share |
+|---:|---:|---:|---:|
+| 50 | 2,641 | 822,091 | 76.82% |
+| 100 | 1,775 | 760,736 | 77.27% |
+| 200 | 1,033 | 655,339 | 78.02% |
+
+The overall scooter share changes little across these cutoffs. The included segments and their individual percentages can still differ. The cutoff does not guarantee statistical reliability. Full values: [threshold_comparison.csv](threshold_comparison.csv).
+
 ## Interpretation limits
 
 The unit is a recorded trip start, not a rider or a route. The 100-start threshold reduces the influence of very small denominators; it is a descriptive choice, not a statistical significance test. Segment-level summaries weight each eligible segment equally; pooled shares weight by trip count. No causal explanation or rider preference can be inferred. Shared-vehicle availability, pricing, land use, and program coverage were not controlled. Current street geometry may differ from the network used in 2025; unmatched and ambiguous IDs are listed rather than guessed. GBSIDs attached to multiple network features are excluded to avoid multiplying trip counts or assigning starts to an uncertain geometry.
