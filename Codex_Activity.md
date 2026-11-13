@@ -90,7 +90,6 @@ Retain useful code and observations from this interaction so you can build on th
 
 - Codex started with Python and the city's API without asking what we wanted to focus on. It did check the units and catch the conflicting 2024/2025 descriptions.
 - It clearly labeled the first 1,000 rows as an ordered preview, not a random sample.
-- The code had comments but was longer than necessary. Changes to the saved writeup also caused confusion because our editor showed an older version.
 
 # 4. More directed exploration
 
