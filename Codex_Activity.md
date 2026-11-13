@@ -231,7 +231,7 @@ Ask Codex to clarify or revise anything you cannot justify. If you do not unders
 - Map counts and shares, then summarize the share range and how many segments have a majority of each vehicle type.
 - Check four segments against the city's services, including one with a bicycle majority. Also check that an ambiguous street ID is excluded rather than counted twice.
 
-**Decision:** We kept 100 starts to reduce the influence of small counts. The overall scooter share stays near 77% across the three cutoffs, though the segments included change and not every percentage is equally reliable.
+**Decision and reason:** We kept the 100-start minimum after comparing 50, 100, and 200. The overall scooter share changes only from 76.82% to 78.02%, so 100 is a reasonable middle ground: it reduces the influence of small counts while retaining 1,775 segments, compared with 1,033 at a minimum of 200. It does not guarantee that every segment's percentage is reliable.
 
 | Minimum starts | Segments | Trip starts | Overall scooter share |
 |---|---:|---:|---:|
@@ -241,7 +241,7 @@ Ask Codex to clarify or revise anything you cannot justify. If you do not unders
 
 Full values: [threshold comparison](Analysis/outputs/threshold_comparison.csv).
 
-**Review timing:** We reviewed the plan in Plan mode after the initial implementation. We chose to keep the main method and add the threshold comparison and both verification cases below.
+**Review timing:** We reviewed this plan in Plan mode **after the initial implementation**. We agreed to retain the main method, add the 50/100/200 comparison, and expand verification to include a bicycle-heavy segment and an ambiguous ID that should be excluded. Those additions were implemented after the review.
 
 ## 7.2 Implement and inspect
 
