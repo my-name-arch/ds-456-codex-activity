@@ -331,4 +331,3 @@ Before you’re done:
 ## Files
 
 See [data/README.md](data/README.md) for downloads and rerun commands. Code, maps, and verification are saved in [our fork](https://github.com/my-name-arch/ds-456-codex-activity).
-
