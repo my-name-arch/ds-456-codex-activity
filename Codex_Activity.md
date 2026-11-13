@@ -328,8 +328,7 @@ Before you’re done:
 - These are recorded start shares, not routes or rider preferences. Availability, pricing, and other possible explanations weren't tested.
 
 
-## Files and remaining review
+## Files
 
 See [data/README.md](data/README.md) for downloads and rerun commands. Code, maps, and verification are saved in [our fork](https://github.com/my-name-arch/ds-456-codex-activity).
 
-**Before submission:** Review these draft reflections and inspect the verification counts and arithmetic ourselves. The retrospective Plan-mode review is recorded in Task 7.1.
